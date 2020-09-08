@@ -3,6 +3,9 @@ server = Flask(__name__)
 
 @server.route("/")
  def hello():
+    # limit rate to prevent DOS style attacks
+    # crawl webpage and filter all desired file types
+    # sync with output directory
     return "Hello World!"
 
 if __name__ == "__main__":
