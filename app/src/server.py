@@ -15,7 +15,7 @@ limiter = Limiter(
 
 @server.route("/")
 @limiter.limit("1 per hour")
- def hello():
+def hello():
     # crawl webpage and filter all desired file types
     media_server = os.environ.get('MEDIA_SERVER')
     media_regex = os.environ.get('MEDIA_REGEX')
