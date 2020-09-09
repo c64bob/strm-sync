@@ -14,7 +14,7 @@ limiter = Limiter(
 )
 
 @server.route("/")
-@limiter.limit("1 per hour")
+@limiter.limit("1 per second")
 def hello():
     # crawl webpage and filter all desired file types
     media_server = os.environ.get('MEDIA_SERVER')
@@ -25,6 +25,7 @@ def hello():
                         </a:propfind>"""
     headers = {'Depth': 'infinity'}
     r = requests.request('PROPFIND', media_server, data=webdav_options, headers=headers)
+    print(r.text)
     xml_dict = xmltodict.parse(r.text, dict_constructor=dict)
 
     for response in xml_dict['d:multistatus']['d:response']:
