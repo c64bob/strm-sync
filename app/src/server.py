@@ -27,7 +27,6 @@ def hello():
                         </a:propfind>"""
     headers = {'Depth': 'infinity'}
     r = requests.request('PROPFIND', media_server, data=webdav_options, headers=headers)
-    print(r.text)
     xml_dict = xmltodict.parse(r.text, dict_constructor=dict)
     
     for response in xml_dict['D:multistatus']['D:response']:
