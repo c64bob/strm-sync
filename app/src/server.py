@@ -72,6 +72,10 @@ def hello():
                 with open(os.path.join(outdir, "TVShows", foldername, filename), "w") as f:
                     f.write(fulllink)
 
+    # trigger a library rescan
+    if os.environ.get('MEDIA_API_KEY') and os.environ.get('MEDIA_API_URL'):
+        headers = {'X-MediaBrowser-Token': os.environ.get('MEDIA_API_KEY')}
+        r = requests.post(os.environ.get('MEDIA_API_URL'), headers=headers)
 
     # finished
     return "finished syncing strm files"
