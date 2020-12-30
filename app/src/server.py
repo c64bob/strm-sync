@@ -13,6 +13,10 @@ limiter = Limiter(
     default_limits=["1 per hour"]
 )
 
+@server.route("/health")
+def health():
+    return "ok"
+    
 @server.route("/")
 @limiter.limit("1 per hour")
 def hello():
