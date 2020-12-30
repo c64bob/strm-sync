@@ -16,5 +16,8 @@ COPY app/src/ .
 # define volume
 VOLUME /media
 
+# expose port
+EXPOSE 5000
+
 # command to run on container start
 CMD [ "python", "./server.py" ] 
