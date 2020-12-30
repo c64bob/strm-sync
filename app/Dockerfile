@@ -19,5 +19,8 @@ VOLUME /media
 # expose port
 EXPOSE 5000
 
+# define health check
+HEALTHCHECK CMD wget --quiet --tries=1 --spider http://localhost:5000/health || exit 1
+
 # command to run on container start
 CMD [ "python", "./server.py" ] 
