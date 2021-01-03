@@ -14,6 +14,7 @@ limiter = Limiter(
 )
 
 @server.route("/health")
+@limiter.limit("1 per second")
 def health():
     return "ok"
     
