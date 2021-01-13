@@ -10,7 +10,7 @@ server = Flask(__name__)
 limiter = Limiter(
     server,
     key_func=get_remote_address,
-    default_limits=["1 per hour"]
+    default_limits=["1 per minute"]
 )
 
 @server.route("/health")
@@ -19,7 +19,7 @@ def health():
     return "ok"
     
 @server.route("/")
-@limiter.limit("1 per hour")
+@limiter.limit("1 per minute")
 def hello():
     # crawl webpage and filter all desired file types
     media_server = os.environ.get('MEDIA_SERVER')
