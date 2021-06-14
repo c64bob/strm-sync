@@ -5,13 +5,13 @@ FROM python:alpine
 WORKDIR /code
 
 # copy the dependencies file to the working directory
-COPY app/requirements.txt .
+COPY requirements.txt .
 
 # install dependencies
 RUN pip install -r requirements.txt
 
 # copy the content of the local src directory to the working directory
-COPY app/src/ .
+COPY src/ .
 
 # define volume
 VOLUME /media
